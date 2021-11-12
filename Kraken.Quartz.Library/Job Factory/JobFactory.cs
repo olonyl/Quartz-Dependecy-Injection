@@ -10,21 +10,22 @@ namespace Kraken.Quartz.Library.Job_Factory
 {
     public class JobFactory : IJobFactory
     {
-        private readonly IServiceProvider _serviceProvider;
+        private readonly IServiceProvider _service;
 
-        public JobFactory(IServiceProvider serviceProvider)
+        public JobFactory(IServiceProvider service)
         {
-            _serviceProvider = serviceProvider;
+            _service = service;
         }
 
         public IJob NewJob(TriggerFiredBundle bundle, IScheduler scheduler)
         {
-            return (IJob)_serviceProvider.GetService(bundle.JobDetail.JobType);
+            var jobDetail = bundle.JobDetail;
+            return (IJob)_service.GetService(jobDetail.JobType);
         }
 
         public void ReturnJob(IJob job)
         {
-            
+
         }
     }
 }

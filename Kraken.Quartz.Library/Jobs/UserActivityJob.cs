@@ -1,25 +1,25 @@
-﻿using Quartz;
+﻿using Microsoft.Extensions.Logging;
+using Quartz;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 
 namespace Kraken.Quartz.Library.Jobs
 {
-    public class NotificationJob : IJob
+    public class UserActivityJob : IJob
     {
-        private readonly ILogger<NotificationJob> _logger;
+        private readonly ILogger<UserActivityJob> _logger;
 
-        public NotificationJob(ILogger<NotificationJob> logger)
+        public UserActivityJob(ILogger<UserActivityJob> logger)
         {
             _logger = logger;
         }
 
         public Task Execute(IJobExecutionContext context)
         {
-            _logger.LogInformation($"{context.JobDetail.JobType} - Notification Activity at: {DateTime.Now}");
+            _logger.LogInformation($"{context.JobDetail.JobType} - User Activity at: {DateTime.Now}");
             return Task.CompletedTask;
         }
     }

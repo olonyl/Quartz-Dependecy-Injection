@@ -8,17 +8,17 @@ namespace Kraken.Quartz.Library.Models
 {
     public class JobMetadata
     {
-        public JobMetadata(Guid id, string name, Type type, string cronValue)
+        public JobMetadata(Guid jobId, Type jobType, string jobName, string cronExpression)
         {
-            Id = id;
-            Name = name;
-            Type = type;
-            CronSchedule = cronValue;
+            JobId = jobId;
+            JobType = jobType;
+            CronExpression = cronExpression;
+            JobName = jobName;
         }
 
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public Type Type { get; set; }
-        public string CronSchedule { get; set; }
+        public Guid JobId { get; set; }
+        public Type JobType { get; set; }
+        public string CronExpression { get; set; }
+        public string JobName { get; set; }
     }
 }
